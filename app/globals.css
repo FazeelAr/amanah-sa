@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #031F3F;
+  --primary: #031F3F;
+  --primary-light: #0A315E;
+  --primary-dark: #011227;
+  --secondary: #EEF3F8;
+  --secondary-light: #F8FAFC;
+  --accent: #B70D3D;
+  --accent-light: #D41246;
+  --accent-dark: #8A072C;
+  --text-dark: #031F3F;
+
+  /* Standard Tailwind v4 Theme Variables */
+  --color-background: #FFFFFF;
+  --color-primary: #031F3F;
+  --color-primary-light: #0A315E;
+  --color-primary-dark: #011227;
+  --color-secondary: #EEF3F8;
+  --color-secondary-light: #F8FAFC;
+  --color-accent: #B70D3D;
+  --color-accent-light: #D41246;
+  --color-accent-dark: #8A072C;
+  --color-text-main: #031F3F;
+  --color-text-dark: #031F3F;
+  --color-bg-soft: #F0F4F9;
+}
+
+@theme {
+  --color-background: var(--color-background);
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-light: var(--color-secondary-light);
+  --color-accent: var(--color-accent);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-text-main: var(--color-text-main);
+  --color-text-dark: var(--color-text-dark);
+  --color-bg-soft: var(--color-bg-soft);
+}
+
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+}
+
+::selection {
+  background-color: #B70D3D;
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0F4F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #031F3F;
+  border-radius: 5px;
+  border: 3px solid #F0F4F9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B70D3D;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+}
+
+.premium-shadow {
+  box-shadow: 0 20px 50px rgba(3, 31, 63, 0.12);
+}
+
+@layer components {
+  .section-padding {
+    @apply py-8 md:py-10 lg:py-12;
+  }
+
+  .container-custom {
+    @apply max-w-6xl mx-auto px-6 md:px-8;
+  }
+
+  /* Button Refinements */
+  .btn-primary {
+    @apply px-6 py-2.5 rounded-full bg-primary text-white font-bold text-sm uppercase tracking-widest transition-all hover:bg-primary-light hover:shadow-2xl hover:shadow-primary/20 active:scale-95 cursor-pointer inline-flex items-center justify-center;
+  }
+
+  .btn-accent {
+    @apply px-6 py-2.5 rounded-full bg-accent text-white font-bold text-sm uppercase tracking-widest transition-all hover:bg-accent-light hover:shadow-2xl hover:shadow-accent/25 active:scale-95 cursor-pointer inline-flex items-center justify-center;
+  }
+}

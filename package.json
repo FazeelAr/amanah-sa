@@ -1,0 +1,36 @@
+{
+  "name": "skc-overseas-consultants",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^6.5.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.14.0",
+    "next": "16.2.6",
+    "next-sanity": "^13.1.5",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sanity": "^6.5.0",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/event-source-polyfill": "^1.0.5",
+    "@types/eventsource": "^1.1.15",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
