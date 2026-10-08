@@ -230,7 +230,7 @@ export default function ContactClient({ data }: { data: any }) {
             </motion.div>
 
             {[
-              { icon: <MapPin className="text-accent" size={24} />, label: "Office Address", val: data?.contactPage?.officeLocation || data?.siteSettings?.officeAddress || "Office 15, 2nd Floor, Big City Tower, Liberty Roundabout, Lahore.", href: "#" },
+              { icon: <MapPin className="text-accent" size={24} />, label: "Office Address", val: data?.contactPage?.officeLocation || data?.siteSettings?.officeAddress || "Office 15, 2nd Floor, Big City Tower, Liberty Roundabout, Lahore.", href: "https://maps.google.com/?q=City+Towers+Main+Boulevard+Gulberg+Lahore" },
               { icon: <Phone className="text-accent" size={24} />, label: "Direct Phone / WhatsApp", val: data?.siteSettings?.contactPhone || "0314 3782608", href: `https://wa.me/923143782608` },
               { icon: <Mail className="text-accent" size={24} />, label: "Official Email", val: data?.contactPage?.emailSupport || data?.siteSettings?.contactEmail || "amanahstudyabroad@gmail.com", href: `mailto:amanahstudyabroad@gmail.com` },
               { icon: <Clock className="text-accent" size={24} />, label: "Working Hours", val: data?.contactPage?.operatingHours || "Mon - Sat: 10:00 AM - 6:00 PM", href: "#" }
@@ -261,13 +261,13 @@ export default function ContactClient({ data }: { data: any }) {
       {/* Embedded Google Map - Liberty Roundabout Big City Tower Lahore */}
       <section className="relative w-full h-[450px] mt-8 bg-slate-100">
         <iframe
-          src={data?.contactPage?.googleMapsEmbedUrl || "https://maps.google.com/maps?q=Big+City+Tower+Liberty+Roundabout+Lahore&t=&z=16&ie=UTF8&iwloc=&output=embed"}
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.0476154708103!2d74.34573107389996!3d31.522852147022494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904f9c6eb57bb%3A0x939b82a19e9a81df!2sCity%20Towers!5e0!3m2!1sen!2s!4v1791470162061!5m2!1sen!2s"
           width="100%"
           height="100%"
           style={{ border: 0 }}
           allowFullScreen={true}
           loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
+          referrerPolicy="strict-origin-when-cross-origin"
           className="grayscale hover:grayscale-0 transition-all duration-1000"
         ></iframe>
         
