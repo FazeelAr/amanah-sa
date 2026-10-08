@@ -37,21 +37,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-## Content Management (Sanity CMS)
 
-This website uses Sanity CMS for managing content like site settings, services, destinations, and team members. 
-The content changes will automatically reflect on the live website (cached for 60 seconds via ISR).
-
-### Accessing the Studio
-
-1. Navigate to `/studio` on your live website or localhost (e.g. `http://localhost:3000/studio`).
-2. Log in using your Sanity credentials.
-3. Manage content directly from the embedded Sanity Studio.
-
-### Editor Workflow
-- Go to `Settings` to update the global Brand Name, Contact Details, and Social Links.
-- Go to `Hero Section` to update the homepage hero.
-- Go to `Services` or `Destinations` to manage your study abroad offerings.
-- Go to `Testimonials` to add or edit student success stories.
-- Go to `About Page` or `Team Members` to update your company's legacy and leadership.
-- Hit **Publish** on any document to save changes. Since we use Incremental Static Regeneration (ISR), the changes will be visible on the website within 60 seconds without requiring a redeploy!

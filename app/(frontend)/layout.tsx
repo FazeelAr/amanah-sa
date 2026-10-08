@@ -31,22 +31,17 @@ export const metadata: Metadata = {
   }
 };
 
-import { safeFetch } from "@/sanity/lib/client";
-import { siteSettingsQuery } from "@/sanity/queries";
-
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const settings = await safeFetch<any>(siteSettingsQuery, {}, { next: { revalidate: 60 } }) || {};
-
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar settings={settings} />
+        <Navbar />
         <main className="relative">{children}</main>
-        <Footer settings={settings} />
+        <Footer />
       </body>
     </html>
   );
