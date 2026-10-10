@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail } from 'lucide-react';
 
 const FacebookIcon = () => (
@@ -30,10 +29,7 @@ export default function Footer({ settings }: { settings?: any }) {
       <div className="container-custom grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative z-10 border-b border-primary/10 pb-8 md:pb-12">
         <div className="space-y-5">
           <Link href="/" className="flex items-center gap-3.5 group">
-            <motion.div
-              whileHover={{ rotate: -5, scale: 1.05 }}
-              className="relative h-12 w-12 md:h-14 md:w-14 overflow-hidden rounded-full bg-white shadow-md p-1 border border-slate-100 group-hover:border-accent transition-colors shrink-0"
-            >
+            <div className="relative h-12 w-12 md:h-14 md:w-14 overflow-hidden rounded-full bg-white shadow-md p-1 border border-slate-100 group-hover:border-accent group-hover:-rotate-6 group-hover:scale-105 transition-all duration-300 shrink-0">
               <Image
                 src={settings?.logoUrl || "/amanah_emblem.png"}
                 alt={settings?.brandName || "Amanah Study Abroad Logo"}
@@ -42,7 +38,7 @@ export default function Footer({ settings }: { settings?: any }) {
                 className="object-contain"
                 loading="eager"
               />
-            </motion.div>
+            </div>
             <div className="flex flex-col">
               <span className="text-xl font-black tracking-tight leading-none text-primary">
                 {settings?.brandName || 'Amanah Study Abroad'}
@@ -69,25 +65,27 @@ export default function Footer({ settings }: { settings?: any }) {
                 'Instagram': <InstagramIcon />
               };
               return (
-              <motion.a
+              <a
                 key={i}
                 href={social.url}
                 target={social.url !== "#" ? "_blank" : undefined}
                 rel={social.url !== "#" ? "noopener noreferrer" : undefined}
-                whileHover={{ y: -4 }}
-                className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-primary flex items-center justify-center cursor-pointer hover:bg-accent hover:text-white hover:border-accent transition-colors duration-300 shadow-sm"
+                className="w-10 h-10 rounded-xl bg-white border border-slate-200 text-primary flex items-center justify-center cursor-pointer hover:bg-accent hover:text-white hover:border-accent hover:-translate-y-1 transition-all duration-300 shadow-sm"
               >
                 {iconMap[social.platform] || <FacebookIcon />}
-              </motion.a>
+              </a>
             )})}
           </div>
         </div>
 
         <div>
           <h2 className="text-sm md:text-base font-bold mb-5 text-primary uppercase tracking-wider">Quick Navigation</h2>
-          <ul className="space-y-3 text-primary/85 font-medium text-sm">
+          <ul className="space-y-2.5 text-primary/85 font-medium text-sm">
             <li><Link href="/" className="hover:text-accent transition-colors flex items-center gap-2 group"><span className="w-1.5 h-1.5 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-all"></span> Home</Link></li>
             <li><Link href="/services" className="hover:text-accent transition-colors flex items-center gap-2 group"><span className="w-1.5 h-1.5 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-all"></span> Services</Link></li>
+            <li><Link href="/how-it-works" className="hover:text-accent transition-colors flex items-center gap-2 group"><span className="w-1.5 h-1.5 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-all"></span> How It Works</Link></li>
+            <li><Link href="/study-destinations" className="hover:text-accent transition-colors flex items-center gap-2 group"><span className="w-1.5 h-1.5 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-all"></span> Destinations</Link></li>
+            <li><Link href="/faqs" className="hover:text-accent transition-colors flex items-center gap-2 group"><span className="w-1.5 h-1.5 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-all"></span> FAQs</Link></li>
             <li><Link href="/about" className="hover:text-accent transition-colors flex items-center gap-2 group"><span className="w-1.5 h-1.5 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-all"></span> About Us</Link></li>
             <li><Link href="/contact" className="hover:text-accent transition-colors flex items-center gap-2 group"><span className="w-1.5 h-1.5 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-all"></span> Contact</Link></li>
           </ul>

@@ -1,155 +1,188 @@
 'use client';
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { Quote, Star } from "lucide-react";
+import { useState } from 'react';
+import { Quote, Star, GraduationCap, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const testimonials = [
-  {
-    name: "Bilal Ahmed",
-    role: "Computer Science, Univ. of Manchester",
-    quote: "Amanah Study Abroad made my dream of studying in the UK a reality. Their guidance on the visa process was flawless, and I received my visa in just 15 days!",
-    location: "United Kingdom",
-    image: "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&q=80&w=400",
-    stars: 5
-  },
-  {
-    name: "Ayesha Siddiqui",
-    role: "Data Science, University of Toronto",
-    quote: "The personalized attention I received at Amanah was incredible. They helped me choose the right course and university that perfectly aligned with my career goals.",
-    location: "Canada",
-    image: "https://images.unsplash.com/photo-1530785602389-07594beb8b73?auto=format&fit=crop&q=80&w=400",
-    stars: 5
-  },
-  {
-    name: "Zubair Qureshi",
-    role: "MBA, NYU Stern Business School",
-    quote: "From initial counseling to final departure, Amanah was with me every step of the way. Their expertise in scholarship applications helped me secure 50% funding!",
-    location: "United States",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400",
-    stars: 5
-  },
-  {
-    name: "Mariam Jameel",
-    role: "Business Administration, Univ. of Sydney",
-    quote: "I was confused about my destination, but Amanah's detailed comparison of countries helped me decide on Australia. Truly the best consultants in Lahore.",
-    location: "Australia",
-    image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400",
-    stars: 5
-  },
-  {
-    name: "Hassan Raza",
-    role: "Engineering, Imperial College London",
-    quote: "Thanks to Amanah Study Abroad, my journey to London was seamless. The team handled my admission and visa application perfectly, making my dream come true.",
-    location: "United Kingdom",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
-    stars: 5
-  },
-  {
-    name: "Sara Malik",
-    role: "Medicine, University of Waikato",
-    quote: "I am extremely grateful to Amanah Study Abroad for their unwavering support. Their expert advice helped me get accepted with ease.",
-    location: "New Zealand",
-    image: "https://images.unsplash.com/photo-1587614382346-4ec70e388b28?auto=format&fit=crop&q=80&w=400",
-    stars: 5
-  }
-];
-
-function TestimonialCard({ testimonial, index }: { testimonial: any; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [80, 0, -40]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0.3]);
-  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.85, 1, 1, 0.95]);
-  
-  const smoothY = useSpring(y, { stiffness: 80, damping: 20 });
-  const smoothScale = useSpring(scale, { stiffness: 80, damping: 20 });
-
-  return (
-    <motion.div
-      ref={cardRef}
-      style={{ y: smoothY, opacity, scale: smoothScale, position: "relative" }}
-      className="group relative h-full"
-    >
-      <div className="bg-white rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(3,31,63,0.05)] hover:shadow-[0_20px_40px_rgba(3,31,63,0.1)] transition-shadow duration-500 border border-slate-100 h-full flex flex-col aspect-square md:aspect-auto md:min-h-[320px]">
-        {/* Content */}
-        <div className="p-6 space-y-4 flex flex-col h-full">
-          {/* Quote icon */}
-          <div className="w-10 h-10 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center shrink-0">
-            <Quote size={16} className="text-primary" />
-          </div>
-
-          <p className="text-sm md:text-base text-primary leading-relaxed font-semibold italic flex-grow">
-            &ldquo;{testimonial.quote}&rdquo;
-          </p>
-          
-          <div className="flex gap-1.5">
-            {Array.from({ length: testimonial.stars }).map((_, i) => (
-              <Star key={i} size={16} className="text-accent fill-accent" />
-            ))}
-          </div>
-
-          <div className="pt-4 border-t border-slate-100 shrink-0">
-            <h4 className="text-base font-bold text-primary mb-1 line-clamp-1">{testimonial.clientName || testimonial.name}</h4>
-            <p className="text-primary/70 text-[10px] font-black uppercase tracking-widest mb-2 line-clamp-1">{testimonial.role}</p>
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
-              <span className="text-[9px] font-bold uppercase tracking-widest text-primary/60">Placed in {testimonial.location}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
+interface Testimonial {
+  name: string;
+  degree: string;
+  university: string;
+  location: string;
+  quote: string;
+  stars: number;
 }
 
-export default function Testimonials({ testimonialsData }: { testimonialsData?: any[] }) {
-  const activeTestimonials = testimonialsData?.length ? testimonialsData : testimonials;
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
+const testimonialsData: Testimonial[] = [
+  {
+    name: 'Bilal Ahmed',
+    degree: 'Master of Data Science',
+    university: 'University of Auckland',
+    location: 'Auckland, New Zealand',
+    quote: 'Amanah Study Abroad made my dream of studying data science abroad a reality. Their expert counselors guided me through university shortlisting and prepared my visa file with zero stress. My visa was approved in record time!',
+    stars: 5,
+  },
+  {
+    name: 'Ayesha Khan',
+    degree: 'Bachelor of Commerce',
+    university: 'University of Auckland',
+    location: 'Auckland, New Zealand',
+    quote: 'The personalized counseling was exceptional. They took the time to review my academic credentials, helped me tailor my SOP, and matched me with the ideal business program in Auckland.',
+    stars: 5,
+  },
+  {
+    name: 'Zubair Qureshi',
+    degree: 'Master of Finance & Economics',
+    university: 'University of Otago',
+    location: 'Dunedin, New Zealand',
+    quote: 'From documentation to scholarship advice, the Amanah team walked with me at every stage. Their transparent approach and attention to detail gave my family complete peace of mind.',
+    stars: 5,
+  },
+  {
+    name: 'Zainab Malik',
+    degree: 'Bachelor of Biomedical Sciences',
+    university: 'University of Otago',
+    location: 'Dunedin, New Zealand',
+    quote: 'I received unconditional offers from premier medical science faculties thanks to their structured application strategy. The visa mock interview was what made me confident on decision day.',
+    stars: 5,
+  },
+  {
+    name: 'Hassan Raza',
+    degree: 'Bachelor of Computer Science',
+    university: 'University of Waikato',
+    location: 'Hamilton, New Zealand',
+    quote: 'Amanah Study Abroad handled my international admissions seamlessly. Their counselors are genuinely invested in your future and always available to answer any questions.',
+    stars: 5,
+  },
+  {
+    name: 'Mariam Jameel',
+    degree: 'Master of Management Studies',
+    university: 'University of Waikato',
+    location: 'Hamilton, New Zealand',
+    quote: 'Outstanding professional ethics and genuine care. They helped me secure high-tier merit scholarships and pre-departure accommodation before I even landed in New Zealand.',
+    stars: 5,
+  },
+];
 
-  const headerYRaw = useTransform(scrollYProgress, [0, 0.3], [80, 0]);
-  const headerOpacityRaw = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  
-  const headerY = useSpring(headerYRaw, { stiffness: 60, damping: 20 });
-  const headerOpacity = useSpring(headerOpacityRaw, { stiffness: 60, damping: 20 });
+export default function Testimonials({ testimonials }: { testimonials?: Testimonial[] }) {
+  const data = testimonials && testimonials.length > 0 ? testimonials : testimonialsData;
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // We show 1 card on mobile, 2 on tablet (md), 3 on desktop (lg)
+  const maxIndex = data.length - 1;
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
+  };
 
   return (
-    <section ref={sectionRef} style={{ position: "relative" }} className="section-padding bg-slate-50 relative overflow-hidden">
-      {/* Animated decorative blobs */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
-        <div className="absolute top-20 left-20 w-80 h-80 bg-accent/20 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary-light/10 rounded-full blur-[100px]"></div>
-      </div>
+    <section className="section-padding bg-slate-50 relative overflow-hidden">
+      {/* Background radial tint */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[140px] pointer-events-none"></div>
 
-      <div className="container-custom relative z-10">
-        {/* Header */}
-        <motion.div 
-          style={{ y: headerY, opacity: headerOpacity }} 
-          className="text-center space-y-4 mb-16 md:mb-20"
-        >
-          <span className="text-accent font-black tracking-[0.3em] uppercase text-xs border-b-2 border-accent pb-2 inline-block">
-            Real Stories, Real Success
-          </span>
-          <h2 className="text-3xl md:text-5xl font-black text-primary tracking-tighter">
-            What Our <span className="text-accent">Global Students</span> Say
-          </h2>
-          <p className="text-slate-500 font-medium max-w-lg mx-auto">
-            Hear from ambitious scholars who transformed their futures with Amanah Study Abroad.
-          </p>
-        </motion.div>
+      <div className="container-custom relative z-10 space-y-10">
+        {/* Header & Controls */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-3 max-w-xl">
+            <span className="text-accent font-black tracking-widest uppercase text-xs">
+              Student Success Stories
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-primary tracking-tight">
+              Trusted by Ambitious Scholars Worldwide
+            </h2>
+            <p className="text-sm md:text-base text-slate-600 font-medium">
+              Discover real journeys of students who realized their global higher education aspirations with Amanah Study Abroad.
+            </p>
+          </div>
 
-        {/* Testimonial Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
-          {activeTestimonials.map((testimonial: any, index: number) => (
-            <TestimonialCard key={index} testimonial={testimonial} index={index} />
+          {/* Carousel Arrows */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handlePrev}
+              aria-label="Previous Testimonials"
+              className="w-12 h-12 rounded-full bg-white border border-slate-200 text-primary hover:bg-accent hover:text-white hover:border-accent shadow-sm flex items-center justify-center transition-all cursor-pointer active:scale-90"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={handleNext}
+              aria-label="Next Testimonials"
+              className="w-12 h-12 rounded-full bg-white border border-slate-200 text-primary hover:bg-accent hover:text-white hover:border-accent shadow-sm flex items-center justify-center transition-all cursor-pointer active:scale-90"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </div>
+
+        {/* Carousel Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[0, 1, 2].map((offset) => {
+            const index = (currentIndex + offset) % data.length;
+            const item = data[index];
+            const isHiddenOnMd = offset === 2; // only 2 cards on md, 3 on lg
+
+            return (
+              <div
+                key={`${index}-${offset}`}
+                className={`bg-white rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl border border-slate-100 flex flex-col justify-between transition-all duration-300 ${
+                  isHiddenOnMd ? 'hidden lg:flex' : 'flex'
+                }`}
+              >
+                <div className="space-y-4">
+                  {/* Top Bar: University Badge + Quote Icon */}
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-secondary rounded-full text-primary font-bold text-xs">
+                      <GraduationCap className="text-accent w-4 h-4" />
+                      <span className="truncate max-w-[190px]">{item.university}</span>
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center text-accent shrink-0">
+                      <Quote size={14} />
+                    </div>
+                  </div>
+
+                  {/* Rating Stars */}
+                  <div className="flex gap-1 text-amber-400">
+                    {Array.from({ length: item.stars }).map((_, i) => (
+                      <Star key={i} size={15} fill="currentColor" />
+                    ))}
+                  </div>
+
+                  {/* Student Quote */}
+                  <p className="text-slate-700 text-sm leading-relaxed italic">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
+                </div>
+
+                {/* Author Info */}
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary text-white font-black text-sm flex items-center justify-center shrink-0">
+                    {item.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-primary text-sm leading-tight">{item.name}</h3>
+                    <p className="text-accent text-[11px] font-bold mt-0.5">{item.degree}</p>
+                    <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">{item.location}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Dots Pagination */}
+        <div className="flex justify-center items-center gap-2 pt-2">
+          {data.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                currentIndex === idx ? 'w-8 bg-accent' : 'w-2.5 bg-slate-300 hover:bg-slate-400'
+              }`}
+            />
           ))}
         </div>
       </div>

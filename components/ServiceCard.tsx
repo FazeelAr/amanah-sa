@@ -1,7 +1,4 @@
-'use client';
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 interface ServiceCardProps {
@@ -13,18 +10,20 @@ interface ServiceCardProps {
   image?: string;
 }
 
-export default function ServiceCard({ title, description, icon, index = 0, image, priority = false }: ServiceCardProps) {
+export default function ServiceCard({ title, description, icon, image, priority = false }: ServiceCardProps) {
   return (
-    <Link href="/contact">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col h-full cursor-pointer"
-      >
+    <Link href="/contact" className="block h-full group">
+      <div className="relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 flex flex-col h-full cursor-pointer">
         <div className="relative h-44 md:h-48 overflow-hidden">
-          <Image src={image || "/service_bg.png"} alt={title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" priority={priority} loading={priority ? "eager" : "lazy"} />
+          <Image
+            src={image || "/aim_service_visa.jpg"}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover group-hover:scale-105 transition-transform duration-700"
+            priority={priority}
+            loading={priority ? "eager" : "lazy"}
+          />
           <div className="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-70 group-hover:opacity-50 transition-opacity"></div>
           <div className="absolute top-4 left-4 bg-white/20 backdrop-blur-md w-11 h-11 md:w-12 h-12 rounded-xl flex items-center justify-center text-xl md:text-2xl shadow-lg border border-white/30 text-white">
@@ -54,7 +53,7 @@ export default function ServiceCard({ title, description, icon, index = 0, image
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 }
