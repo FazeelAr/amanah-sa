@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   Globe2,
@@ -130,6 +131,18 @@ export default function StudyDestinationsPage() {
     <div className="pt-20">
       {/* 1. Page Header */}
       <section className="bg-gradient-to-b from-[#011227] via-[#031F3F] to-[#011227] py-16 md:py-20 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 opacity-25">
+          <Image
+            src="/hero.jpeg"
+            alt="Study Destinations Background"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-radial from-transparent via-[#011227]/70 to-[#011227]"></div>
+
         <div className="container-custom relative z-10 space-y-4 max-w-3xl mx-auto">
           <span className="text-[10px] font-black uppercase tracking-[0.25em] text-accent-light border border-white/20 px-3.5 py-1 rounded-full bg-white/5 inline-block">
             Global Horizons

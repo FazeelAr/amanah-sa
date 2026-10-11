@@ -27,9 +27,9 @@ export default function Hero({ data }: { data?: any }) {
     <section className="relative pt-28 pb-16 md:pt-32 md:pb-20 lg:pt-36 lg:pb-24 overflow-hidden bg-gradient-to-b from-[#011227] via-[#031F3F] to-[#011227] text-white flex items-center min-h-[90vh]">
       {/* Background imagery & glow */}
       <div className="absolute inset-0 z-0">
-        <div className="relative h-full w-full opacity-20">
+        <div className="relative h-full w-full opacity-25">
           <Image
-            src={data?.backgroundImageUrl || '/aim_hero_bg.png'}
+            src={data?.backgroundImageUrl || '/hero.jpeg'}
             alt="Amanah Global Education"
             fill
             sizes="100vw"

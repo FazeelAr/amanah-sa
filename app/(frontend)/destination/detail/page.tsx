@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   destinations,
@@ -60,6 +61,18 @@ export default async function DestinationDetailPage({ searchParams }: DetailPage
     <div className="pt-20 bg-slate-50 min-h-screen">
       {/* 1. Header Banner */}
       <section className="bg-gradient-to-b from-[#011227] via-[#031F3F] to-[#011227] py-12 md:py-16 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-25">
+          <Image
+            src="/hero.jpeg"
+            alt="Destination Detail Background"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-radial from-transparent via-[#011227]/70 to-[#011227]"></div>
+
         <div className="container-custom relative z-10 space-y-6">
           {/* Back Navigation */}
           <Link

@@ -10,9 +10,9 @@ export default function AboutClient({ data }: { data?: any }) {
     <div className="pt-20">
       {/* 1. Page Header */}
       <section className="bg-gradient-to-b from-[#011227] via-[#031F3F] to-[#011227] py-14 md:py-20 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-25">
           <Image
-            src="/aim_hero_bg.png"
+            src="/hero.jpeg"
             alt="About Amanah Background"
             fill
             sizes="100vw"
