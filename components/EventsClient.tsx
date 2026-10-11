@@ -70,7 +70,7 @@ export default function EventsClient() {
       type: 'BOOTCAMP',
       date: 'January 10, 2027',
       time: '2:00 PM - 5:00 PM',
-      venue: 'Amanah Training Center, Big City Tower, Lahore',
+      venue: 'Amanah Training Center, Big City Plaza, Lahore',
       attendees: '150+ Expected Attendees',
       topics: [
         'Proven test strategies to achieve 7.0+ IELTS band scores',

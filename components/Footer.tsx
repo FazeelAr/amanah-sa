@@ -107,7 +107,7 @@ export default function Footer({ settings }: { settings?: any }) {
             <li className="flex gap-3">
               <MapPin className="text-accent shrink-0 mt-0.5" size={18} />
               <span className="leading-relaxed">
-                {settings?.officeAddress || 'Office 15, 2nd Floor, Big City Tower, Liberty Roundabout, Lahore.'}
+                {settings?.officeAddress || 'Big City Plaza, Liberty Roundabout, main boulevard, Gulberg III, Lahore, Pakistan'}
               </span>
             </li>
             <li className="flex gap-3 items-center group">

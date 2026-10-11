@@ -100,7 +100,7 @@ export default function ContactClient({ data }: { data?: any }) {
                   <div>
                     <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Visit Us</h4>
                     <p className="text-sm font-bold text-primary mt-0.5 leading-snug">
-                      Office 15, 2nd Floor, Big City Tower, Liberty Roundabout, Lahore.
+                      Big City Plaza, Liberty Roundabout, main boulevard, Gulberg III, Lahore, Pakistan
                     </p>
                   </div>
                 </div>
@@ -160,14 +160,14 @@ export default function ContactClient({ data }: { data?: any }) {
               {/* Interactive Google Maps Embed */}
               <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm h-64 sm:h-72 w-full relative">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.0476154708103!2d74.34573107389996!3d31.522852147022494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904f9c6eb57bb%3A0x939b82a19e9a81df!2sCity%20Towers!5e0!3m2!1sen!2s!4v1791470162061!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d336.2988502806848!2d74.33970923075157!3d31.510229881208137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sBig%20City%20Plaza%2C%20Block%20E2%20Block%20E%202%20Gulberg%20III%2C%20Lahore%2C%2054000%2C%20Pakistan!5e0!3m2!1sen!2s!4v1791703981282!5m2!1sen!2s"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="strict-origin-when-cross-origin"
-                  title="Amanah Study Abroad Office Map"
+                  title="Amanah Study Abroad Office Map - Big City Plaza, Lahore"
                   className="grayscale hover:grayscale-0 transition-all duration-700"
                 ></iframe>
               </div>

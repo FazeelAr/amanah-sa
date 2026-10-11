@@ -7,7 +7,7 @@ Amanah Study Abroad is a premier educational and student visa consultancy servic
 
 **Official Contact Details:**
 - **Email:** `amanahstudyabroad@gmail.com`
-- **Address:** Office 15, 2nd Floor, Big City Tower, Liberty Roundabout, Lahore
+- **Address:** Big City Plaza, Liberty Roundabout, main boulevard, Gulberg III, Lahore, Pakistan
 - **Contact / WhatsApp:** `0314 3782608` (+92 314 3782608)
 - **Facebook:** https://www.facebook.com/profile.php?id=61594107057346
 

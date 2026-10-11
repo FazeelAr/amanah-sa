@@ -193,7 +193,7 @@ export default function Navbar({ settings }: { settings?: any }) {
               Get Free Consultation <ChevronRight size={16} />
             </Link>
             <div className="flex justify-between items-center text-slate-400 text-[10px] font-bold tracking-widest uppercase pt-0.5">
-              <span>Office 15, Liberty, Lahore</span>
+              <span>Big City Plaza, Liberty, Lahore</span>
               <span>© {new Date().getFullYear()} Amanah</span>
             </div>
           </div>
